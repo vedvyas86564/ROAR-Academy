@@ -43,9 +43,13 @@ ax2.set_xlabel('a parameter')
 ax2.set_ylabel('b parameter')
 ax2.set_zlabel('f(a, b)')
 
-# Find the minimum value
+# Find the minimum value will help you 
 optimal_x, optimal_y = np.where(func_value == np.amin(func_value))
 print(a_arr[optimal_x, optimal_y], b_arr[optimal_x, optimal_y])
 ax2.scatter(a_arr[optimal_x, optimal_y], b_arr[optimal_x, optimal_y], \
     func_value[optimal_x, optimal_y],marker = '*')
 plt.show()
+#f gives you the best solution of a and b becuase there is noise
+#this is an exhaustive serach/brute force search so we are going over all values of a and b
+#chew or foss
+#millings, billings, and trillings

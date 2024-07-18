@@ -14,8 +14,10 @@ import matplotlib.pyplot as plt
 batch_size = 128
 num_classes = 10
 epochs = 500
-
+#convolutiuon is element wise dot product
 # input image dimensions
+#sobel filter will ephasize the edges
+#CNN doesen't increase that much as image size increases
 img_rows, img_cols = 28, 28
 
 # load the data built in Keras, split between train and test sets
@@ -53,10 +55,12 @@ model = Sequential()
 model.add(Conv2D(32, kernel_size=(5, 5),
                  activation='relu',
                  input_shape=input_shape))
+#max pooling identifies your maximum value in the given pool_size
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Conv2D(64, kernel_size=(5, 5), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
+#some nuerons are randomly dropped out to prevent overfitting to the data
 model.add(Dropout(0.5))
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))

@@ -21,6 +21,7 @@ try:
     path = os.path.dirname(os.path.abspath(__file__))
 
     # Open the file for read
+    #retrieve full path from the root, it should be the absolute path, not the relative path
     f_handle = open(path+'/'+file_name,"r")
     f_handle.readline()   # The first line is table captions
     # Create three dictionaries of different lengths

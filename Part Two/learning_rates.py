@@ -1,5 +1,5 @@
 ## This is course material for Introduction to Python Scientific Programming
-## Example code: gradient_descent_line_search.py
+## Example code: gradient_descent.py
 ## Author: Allen Y. Yang
 ##
 ## (c) Copyright 2020. Intelligent Racing Inc. Not permitted for commercial use
@@ -36,47 +36,35 @@ ax2.set_ylabel('b parameter')
 ax2.set_zlabel('f(a, b)')
 
 # Plot the gradient descent
-
 def grad(aa):
-    global sample_count, y_sample, x_sample
-
     grad_aa = np.zeros(2)
-    update_vector = 1/sample_count * (y_sample - aa[0] * x_sample - aa[1])
-    grad_aa[0] = - x_sample.dot(update_vector)
-    grad_aa[1] = - np.ones(sample_count).dot(update_vector)
+    update_vector = (y_sample - aa[0] * x_sample - aa[1])
+    grad_aa[0] = - 1/sample_count * x_sample.dot(update_vector)
+    grad_aa[1] = - 1/sample_count * np.sum(update_vector)
     return grad_aa
 
 aa = np.array([-4, 4])
-value = penalty(aa[0],aa[1])
+delta = np.inf
+epsilon = 0.001
+learn_rate = 0.01
+learn_rate_two = 1
+learn_rate_three = 0.001
+step_count = 0
 ax2.scatter(aa[0], aa[1], penalty(aa[0],aa[1]), c='b', s=100, marker='*')
-epsilon = 0.00001
-learn_rates = [0.2, 0.1, 0.05, 0.01] #different learn rates and computer chooses the best one
-max_iteration = 100
-delta = value
-iter = 0
 # Update vector aa
-#max iterations prevents algorithm in rare cases to keep going
-#one gradient descent gives you one initial solution
-while delta > epsilon and iter < max_iteration: 
-    delta = 0
-    aa_next = aa
-    for rate in learn_rates:
-        aa_try = aa - rate * grad(aa)
-        value_next = penalty(aa_try[0],aa_try[1])
-        if value_next<value and value - value_next > delta:
-            delta = value - value_next
-            aa_next = aa_try
-
+while delta > epsilon:
+    # Gradient Descent
+    aa_next = aa - learn_rate * grad(aa)
+    # Plot the animation
     ax2.plot([aa[0],aa_next[0]],[aa[1], aa_next[1]],\
         [penalty(aa[0],aa[1]), penalty(aa_next[0],aa_next[1]) ], 'ko-')
+    delta = np.linalg.norm(aa - aa_next)
     aa = aa_next
-    value = value - delta
-    iter +=1
+    step_count +=1
     fig.canvas.draw_idle()
     plt.pause(0.1)
 
 print('Optimal result: ', aa)
-print('Step Count:', iter)
 ax2.scatter(aa[0], aa[1], penalty(aa[0],aa[1]), c='b', s=100, marker='*')
 plt.show()
-
+print('Step Count:', step_count)

@@ -24,5 +24,6 @@ except IOError:
     print('IO Error! Please check valid file names and paths')
     exit
 finally:
+    #make sure to close files in finally block
     source_handle.close()
     result_handle.close()

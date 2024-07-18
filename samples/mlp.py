@@ -11,6 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Create data
+#solving linearly non seperable problems
 linearSeparableFlag = False
 x_bias = 6
 
@@ -66,6 +67,7 @@ model = Sequential()
 model.add(Dense(4, input_shape=(2,), activation='sigmoid', use_bias=True))
 # model.add(Dense(4, input_shape=(2,), activation='relu', use_bias=True))
 model.add(Dense(2, activation='softmax' ))
+#use ReLU activation function instead of sigmoid becuase it gives you a faster gradient
 model.compile(loss='mean_squared_error', optimizer='sgd', metrics=['binary_accuracy'])
 
 model.fit(trainingX, trainingY, epochs=500, batch_size=10, verbose=1, validation_split=0.2)

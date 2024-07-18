@@ -12,10 +12,10 @@ ax1 = plt.gca()               # Get Current Axes function
 ax1.set_xlim([-10, 0])
 ax1.set_ylim([-10, 10])
 
-def onSelect(x):
+def onSelect(x): #this is just plotting the coordinates
 	print(x)
 
-lasso = LassoSelector(ax=ax1, onselect=onSelect)
+lasso = LassoSelector(ax=ax1, onselect=onSelect) #on select event
 
 fig2 = plt.figure(1)           # Create another Figure 1
 ax2 = plt.gca()                # Get Current Axes function
@@ -35,6 +35,6 @@ def onclick(event):
 	plt.plot(x1,y1, 'ro')
 	fig2.canvas.draw_idle()
     
-fig2.canvas.mpl_connect('button_press_event', onclick)
+fig2.canvas.mpl_connect('button_press_event', onclick) #if button press, we trigger onclick
 
 plt.show()

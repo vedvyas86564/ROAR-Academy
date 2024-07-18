@@ -51,6 +51,7 @@ model = Sequential()
 model.add(Dense(800, input_shape=input_shape, activation='relu'))
 model.add(Dense(800, activation='relu'))
 model.add(Dense(128, activation='relu'))
+#will make the output of last layer as close to zero and one as possible
 model.add(Dense(num_classes, activation='softmax' ))
 
 opt = tf.keras.optimizers.SGD(learning_rate=0.1)

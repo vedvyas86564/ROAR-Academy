@@ -1,0 +1,24 @@
+reinforcement learning trains a reward function to be better than humans, we have to give an environmnet 
+we are inputting human data y such that machines can output a y* close to or better than humans
+#gradient descent is the simplest form of machine learning
+if AGI becomes really general it can be human intelligence
+can be used to classify numbers or images
+#all-or-none-principle
+#perceptron model- takes the weighted sum and puts them into a step function(0 or 1) then takes it output
+function needs to be differentiable, so we use sigmoid function since step function is not continous
+#defining a model and addinga perceptron then compiling 
+#model.fit givese you the x and y it will do the gradient descent
+#seperate the training and testing data
+#Output size=Input size−Kernel size+1
+#pull a little switcharoo while speaking start with where everyone agrees
+#short distance-ultrashound, midrange- LIDAR, long range- RGB camera
+#you need GPS
+#you need to have vehicle state sensing-> IMU, wheel speed sensor, motor speed sensor
+#environment perception and object perception(label all the objects) and track objects
+#motion planner takes into accoutn where you can go and where you cannot go, you want a detailed plan for the next three seconds
+#you will send the plan into the controller
+#Longitudinal control-> speed and break
+#LAteral control-> steering and orientation
+#Popular control algorithm-> Pure Pursuit Control, PID control, MPC(for high speeds)
+#PID may only go in straight lines so you need to limit your curve
+
